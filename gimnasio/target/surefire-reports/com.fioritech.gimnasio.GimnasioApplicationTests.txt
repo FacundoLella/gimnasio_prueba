@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.fioritech.gimnasio.GimnasioApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.768 s -- in com.fioritech.gimnasio.GimnasioApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.029 s -- in com.fioritech.gimnasio.GimnasioApplicationTests
