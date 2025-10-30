@@ -9,17 +9,24 @@ pipeline {
     }
 
     stages {
-        stage('Clonar código') {
+        stage('Compilar y ejecutar tests') {
             steps {
-                git branch: 'master', url: "${GIT_URL}"
+                dir('gimnasio') {
+                    sh './mvnw clean test'
+                }
             }
         }
 
-        stage('Compilar y ejecutar tests') {
-            steps {
-                sh 'mvn clean test'
+        stage('Build del JAR (solo si los tests pasan)') {
+            when {
+                expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
             }
-        }
+            steps {
+                dir('gimnasio') {
+                    sh './mvnw package -DskipTests=true'
+                }
+            }
+}
 
         stage('Build del JAR (solo si los tests pasan)') {
             when {
