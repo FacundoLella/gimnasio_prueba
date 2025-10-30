@@ -26,16 +26,9 @@ pipeline {
                     sh './mvnw package -DskipTests=true'
                 }
             }
-}
-
-        stage('Build del JAR (solo si los tests pasan)') {
-            when {
-                expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
-            }
-            steps {
-                sh 'mvn package -DskipTests=true'
-            }
         }
+
+        
 
         stage('Deploy remoto con Docker Compose') {
             when {
